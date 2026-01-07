@@ -10,4 +10,4 @@ data:
       - job_name: 'cookingapp'
         metrics_path: '/actuator/prometheus'
         static_configs:
-          - targets: ['cookingapp-service:8082']   # The Kubernetes service of your app
+          - targets: ['cookingapp-service:80']   # The Kubernetes service of your app
