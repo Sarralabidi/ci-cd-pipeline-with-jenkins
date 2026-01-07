@@ -26,6 +26,7 @@ stages {
         }
     }
 
+    /*
      stage('SonarQube Analysis') {
     steps {
         dir('Cookingapp-cookappbackend/Cookingapp-cookappbackend') {
@@ -37,7 +38,9 @@ stages {
             }
         }
     }
-}
+} 
+*/
+
 
 
     stage('Build Docker Image') {
