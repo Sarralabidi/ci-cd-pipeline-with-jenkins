@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Copy the built Spring Boot JAR file into the container
 COPY target/cookingapp-0.0.1-SNAPSHOT.jar app.jar
+COPY src/main/resources/application.properties ./application.properties
 
 # Expose the application's port
 EXPOSE 8082
