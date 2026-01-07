@@ -111,7 +111,7 @@ stage('Deploy to Kubernetes') {
             sh '''
                 echo "$KUBECONFIG_CONTENT" > kubeconfig-temp
 
-                kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/prometheus-config.yaml
+                kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/prometheus-configmap.yaml
                 kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/prometheus-deployment.yaml
                 kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/prometheus-service.yaml
 
