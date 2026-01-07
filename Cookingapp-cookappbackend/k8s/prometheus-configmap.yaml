@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 5s
+    scrape_configs:
+      - job_name: 'cookingapp'
+        metrics_path: '/actuator/prometheus'
+        static_configs:
+          - targets: ['cookingapp-service:8082']   # The Kubernetes service of your app
