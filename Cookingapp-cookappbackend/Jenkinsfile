@@ -104,6 +104,27 @@ stage('Deploy to Kubernetes') {
     }
 }
 
+    stage('Deploy Prometheus') {
+    steps {
+        echo '📊 Deploying Prometheus to Kubernetes...'
+        withCredentials([kubeconfigContent(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_CONTENT')]) {
+            sh '''
+                echo "$KUBECONFIG_CONTENT" > kubeconfig-temp
+
+                kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/prometheus-config.yaml
+                kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/prometheus-deployment.yaml
+                kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/prometheus-service.yaml
+
+                kubectl --kubeconfig=kubeconfig-temp get pods
+                kubectl --kubeconfig=kubeconfig-temp get svc
+
+                rm -f kubeconfig-temp
+            '''
+        }
+    }
+}
+
+
 
 
 
