@@ -115,6 +115,10 @@ stage('Deploy to Kubernetes') {
                 kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/prometheus-deployment.yaml
                 kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/prometheus-service.yaml
 
+                # Grafana
+                kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/grafana-deployment.yaml
+                kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/grafana-service.yaml
+
                 kubectl --kubeconfig=kubeconfig-temp get pods
                 kubectl --kubeconfig=kubeconfig-temp get svc
 
